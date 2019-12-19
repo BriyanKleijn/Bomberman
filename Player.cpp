@@ -15,11 +15,24 @@ Player::Player(uint8_t player)
 Player::Player(uint8_t player, Level &_level)
 {
 	level = &_level;// Zet de reference
-	posX = 2;// Start positie
-	posY = 2;// Start positie
-	playerDrawDirection = 1;// Standaard direction
+	if (player == 1) {
+		posX = 2;// Start positie
+		posY = 2;// Start positie
+		playerDrawDirection = 1;// Standaard direction
+	}
+	else if (player == 2)
+	{
+		posX = 5;
+		posY = 5;
+		playerDrawDirection = 1;// Standaard direction
+		
+	}
 }
 
+void Player::Start()
+{
+	Draw(*level->tft, level->location(posX), level->location(posY));
+}
 // Zorgt voor het drawen van de functie
 void Player::Draw(Adafruit_ILI9341 &tft, uint8_t locationX, uint8_t locationY) {
 	switch (playerDrawDirection) {
@@ -240,6 +253,11 @@ void Player::draw_playerRight_bitmap(Adafruit_ILI9341 &tft, uint8_t x, uint8_t y
 
 void Player::SpawnPlayer()
 {
+}
+
+void Player::MoveIR(uint8_t x, uint8_t y)
+{
+	Draw(*level->tft, level->location(x), level->(y));
 }
 
 void Player::Move(uint8_t _direction)

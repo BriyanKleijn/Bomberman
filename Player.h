@@ -28,7 +28,9 @@ public:
 	Player(uint8_t player, Level &);
 
 	void Draw(Adafruit_ILI9341 &tft, uint8_t locationX, uint8_t locationY);
+	void Start();
 	void SpawnPlayer();
+	void MoveIR(uint8_t x, uint8_t y);
 	void Move(uint8_t direction);
 	void SetCurrentLocation(uint8_t x, uint8_t y);
 	void BombDropCheck();

@@ -14,6 +14,7 @@ Adafruit_ILI9341 tft(10,9);
 
 Level level(tft, teller);
 Player flayer(1, level);
+Player player2(2, level);
 Input input(flayer);
 
 ISR(TIMER0_COMPA_vect)
@@ -37,7 +38,7 @@ int main(void)
 	level.SetLevel();
 	level.DrawLevel();
 	input.start();
-
+	player2.Start();
 	while (1)
 	{
 			level.Timer();
